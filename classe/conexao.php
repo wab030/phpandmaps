@@ -1,5 +1,5 @@
 <?php
-  echo "<p> Teste </p>";
+  echo "<p> Conexao funcionando </p>";
 
   $host = "localhost";
   $usuario = "root";
