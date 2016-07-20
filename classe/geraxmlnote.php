@@ -1,9 +1,12 @@
+<meta charset="utf-8">
 <?php
   require("conexao.php");
   // Start XML file, create parent node
   $dom = new DOMDocument("1.0");
+  $dom->formatOutput = true;
   $node = $dom->createElement("markers");
   $parnode = $dom->appendChild($node);
+  $dom->preserveWhiteSpace = false;
 
   // Opens a connection to a MySQL server
   $connection = new mysqli($host, $usuario, $senha, $bd);
@@ -14,6 +17,7 @@
 
   $consulta = "select * from markers";
   $con = $mysqli->query($consulta) or die($mysli->error);
+  header("Content-Type: text/xml");
 
   while($dado=$con->fetch_array()){
     $node = $dom->createElement("marker");
@@ -23,23 +27,8 @@
     $newnode->setAttribute("lat", $row['lat']);
     $newnode->setAttribute("lng", $row['lng']);
     $newnode->setAttribute("type", $row['type']);
-    echo $dado["name"];
   }
 
-
-  $dom->save("/home/bordi/contatos.xml");
-
-//  header("Content-Type: text/xml");
-  print $dom->saveXML();
-
-  //header("Content-type: text/xml");
-/*
-   $newnode = $parnode->appendChild($node);
-   $newnode->setAttribute("name",$row['name']);
-   $newnode->setAttribute("address", $row['address']);
-   $newnode->setAttribute("lat", $row['lat']);
-   $newnode->setAttribute("lng", $row['lng']);
-   $newnode->setAttribute("type", $row['type']);
-*/
+  echo $dom->saveXML();
 
 ?>

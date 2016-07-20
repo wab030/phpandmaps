@@ -25,5 +25,5 @@
 	#cabeçalho da página
 	header("Content-Type: text/xml");
 	# imprime o xml na tela
-		print $dom->saveXML();
+	//	print $dom->saveXML();
 ?>
