@@ -1,6 +1,4 @@
 <?php
-  echo "<p> Conexao funcionando </p>";
-
   $host = "localhost";
   $usuario = "root";
   $senha = "Bordi1973";

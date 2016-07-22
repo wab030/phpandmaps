@@ -1,7 +1,7 @@
 <?php
-  require("conexao.php");
+  require("classe/conexao.php");
 // Start XML file, create parent node
-  $dom = new DOMDocument("1.0");
+  $dom = new DOMDocument();
   $node = $dom->createElement("markers");
   $dom->AppendChild($node);
 
@@ -21,6 +21,7 @@
   }
 
 //  header("Content-Type: text/xml");
+  $dom->save("markers.xml");
 
   echo "<pre>";
   $dom->formatOutput = TRUE;
